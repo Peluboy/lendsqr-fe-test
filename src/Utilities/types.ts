@@ -64,7 +64,7 @@ export type User = {
       employmentStatus: string;
       sector: string;
       monthlyIncome: string;
-      loanRepayment: string;
+      loanPayment: string;
     };
     socials: {
       facebook: string;
@@ -74,6 +74,15 @@ export type User = {
     employmentStatus: string;
     isActive: boolean;
     status: string;
+  lower: {
+    income: number
+  },
+  higher: {
+    income: number
+  },
+  office: {
+    email: string
+  }
   };
 
  export type AppContextProps = {
@@ -101,3 +110,73 @@ export type User = {
     onClose: () => void;
     onFilter: (filters: any) => void;
   }
+
+
+
+  /**
+ * Untitled Schema
+ */
+export interface UntitledSchema {
+  user: User[];
+  [property: string]: any;
+}
+
+// export interface User {
+//   accountBalance?: string;
+//   accountNumber?: string;
+//   bankAccounts?: string;
+//   createdAt?: string;
+//   education?: Education;
+//   email?: string;
+//   employmentStatus?: string;
+//   guarantor?: Guarantor;
+//   id?: string;
+//   orgName?: string;
+//   phoneNumber?: string;
+//   profile?: Profile;
+//   socials?: Socials;
+//   status?: string;
+//   userName?: string;
+//   [property: string]: any;
+// }
+
+export interface Education {
+  duration: string;
+  employmentStatus: string;
+  level: string;
+  loanRepayment: string;
+  monthlyIncome: string;
+  officeEmail: string;
+  sector: string;
+  [property: string]: any;
+}
+
+export interface Guarantor {
+  address: string;
+  email: string;
+  firstName: string;
+  gender: string;
+  lastName: string;
+  phoneNumber: string;
+  relationship: string;
+  [property: string]: any;
+}
+
+export interface Profile {
+  address: string;
+  avatar: string;
+  bvn: string;
+  children: string;
+  firstName: string;
+  gender: string;
+  lastName: string;
+  maritalStatus: string;
+  [property: string]: any;
+}
+
+export interface Socials {
+  facebook: string;
+  instagram: string;
+  twitter: string;
+  [property: string]: any;
+}

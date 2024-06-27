@@ -1,10 +1,11 @@
+// UserDetails.tsx
+
 import React, { useContext } from 'react';
 import { AppContext } from '../../Context/AppContext';
 import classes from './UserDetails.module.scss';
-import { AppContextValues } from '../../Utilities/types';
 
 const UserDetails = ({ onBack }: { onBack: () => void }) => {
-  const { selectedUser } = useContext(AppContext) as AppContextValues;
+  const { selectedUser } = useContext(AppContext)!;
 
   if (!selectedUser) return null;
 

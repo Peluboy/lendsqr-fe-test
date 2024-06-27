@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { useUsers } from "../Hook/users";
 import { AppContextProps, AppContextValues } from "../Utilities/types";
+import useUsers from "../Hook/users";
 
 export const AppContext = createContext<AppContextValues | null>(null);
 
@@ -9,7 +9,7 @@ const AppContextProvider = ({ children }: AppContextProps) => {
 
   const totalUsers = users.length;
   const totalActiveUsers = users.filter((user) => user.status === "Active").length;
-  const usersWithLoans = users.filter((user) => Number(user.education.loanRepayment) > 0);
+  const usersWithLoans = users.filter((user) => Number(user.education.loanPayment) > 0);
   const usersWithSavings = users.filter((user) => Number(user.accountBalance) > 0);
   const organizationsArray = users.map((user) => user.orgName);
 

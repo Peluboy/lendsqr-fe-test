@@ -1,43 +1,53 @@
-import { useState, useEffect } from "react";
-import { fetchUsers, fetchUserDetails } from "../Api/api";
-import { User } from "../Utilities/types";
+import { useEffect, useState } from 'react';
+import { fetchUsers } from '../Api/api'; // Import your API functions
+import { User } from '../Utilities/types';
 
-export const useUsers = () => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [isSendingRequest, setIsSendingRequest] = useState<boolean>(false);
+const useUsers = () => {
+  const [users, setUsers] = useState<User[]>([]); // Assuming User type is defined
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [isSendingRequest, setIsSendingRequest] = useState(false);
 
+  // Fetch all users initially
   useEffect(() => {
-    setIsSendingRequest(true);
-    fetchUsers()
-      .then(data => {
-        setUsers(data);
+    const getUsers = async () => {
+      setIsSendingRequest(true);
+      try {
+        const fetchedUsers = await fetchUsers();
+        setUsers(fetchedUsers);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      } finally {
         setIsSendingRequest(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setIsSendingRequest(false);
-      });
+      }
+    };
+
+    getUsers();
   }, []);
 
-  const getUserDetails = (id: number) => {
+  // Function to fetch user details by ID
+  const getUserDetails = async (id: number) => {
     setIsSendingRequest(true);
-    fetchUserDetails(id)
-      .then(data => {
-        setSelectedUser(data);
-        setIsSendingRequest(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setIsSendingRequest(false);
-      });
+    try {
+      const userDetails = users.find(user => user.id === id);
+      if (!userDetails) {
+        throw new Error(`User with ID ${id} not found`);
+      }
+      setSelectedUser(userDetails);
+      console.log(`Fetched user details: `, userDetails);
+    } catch (error) {
+      console.error(`Error fetching user details for ID ${id}:`, error);
+    } finally {
+      setIsSendingRequest(false);
+    }
   };
 
   return {
     users,
-    setUsers, // Ensure setUsers is returned here
+    setUsers,
     isSendingRequest,
     selectedUser,
-    getUserDetails
+    getUserDetails,
   };
 };
+
+export default useUsers;
