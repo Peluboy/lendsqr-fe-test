@@ -1,0 +1,139 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 168px;
+  padding: 30px;
+}
+
+.logoSection > img {
+  width: 120px;
+}
+
+.searchSection {
+  width: 400px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  input {
+    height: 100%;
+    width: calc(400px - 52px);
+    background: #ffffff;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color: #545f7d;
+    outline: none;
+    padding: 0 12px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #21407d3a;
+    border-right: none;
+    box-sizing: border-box;
+    &:focus {
+      outline: 2px solid #39cdcc;
+    }
+    &::placeholder {
+      opacity: 0.7;
+    }
+  }
+  button {
+    width: 52px;
+    height: 40px;
+    background: #39cdcc;
+    color: #ffffff;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    box-sizing: border-box;
+  }
+}
+
+.profileAndDocs {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  a {
+    font-family: "Roboto";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration: underline;
+    color: #213f7d;
+  }
+  div:nth-child(2) {
+    font-size: 1.5rem;
+    color: #213f7d;
+  }
+  div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    img:nth-child(1) {
+      height: 40px;
+      width: 40px;
+      border-radius: 50px;
+    }
+    span:nth-child(2) {
+      font-family: "Montserrat";
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      color: #213f7d;
+      margin: 0 10px;
+    }
+    span:nth-child(3) {
+      color: #213f7d;
+    }
+  }
+}
+
+.hamburgerMenu {
+  display: none;
+}
+
+/* Tablets */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    padding: 30px;
+  }
+  .logoSection > img {
+    width: 120px;
+  }
+  .searchSection {
+    display: none;
+  }
+  .profileAndDocs {
+    display: none;
+  }
+  .hamburgerMenu {
+    display: block;
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: #213f7d;
+  }
+}
+
+/* Mobile Phone */
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 24px;
+  }
+  .logoSection > img {
+    width: 120px;
+  }
+  .searchSection {
+    display: none;
+  }
+  .profileAndDocs {
+    display: none;
+  }
+  .hamburgerMenu {
+    display: block;
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: #213f7d;
+  }
+}

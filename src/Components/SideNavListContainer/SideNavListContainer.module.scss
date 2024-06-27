@@ -1,0 +1,45 @@
+.navListHeader {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #545f7d;
+  padding: 0 30px;
+  margin-bottom: 10px;
+}
+
+.navListItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 30px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #213f7d;
+  position: relative;
+  margin: 0.5rem 0;
+  opacity: 0.7;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navListItem:hover {
+  background: #f3fcfc;
+}
+
+.activeNav {
+  background: #f3fcfc;
+  opacity: 1;
+}
+
+.activenavIndicator {
+  width: 3px;
+  height: 100%;
+  background: #39cdcc;
+  position: absolute;
+  left: 0;
+}

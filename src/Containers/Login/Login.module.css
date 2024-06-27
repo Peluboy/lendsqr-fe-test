@@ -1,0 +1,35 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  padding: 0 4.25rem;
+}
+
+.imageSection,
+.formSection {
+  width: 50%;
+  height: 100%;
+}
+
+/* MEdia queries */
+/* Tablets */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .imageSection {
+    display: none;
+  }
+
+  .formSection {
+    width: 100%;
+  }
+}
+
+/* Phones */
+@media screen and (max-width: 767px) {
+  .imageSection {
+    display: none;
+  }
+
+  .formSection {
+    width: 100%;
+  }
+}
