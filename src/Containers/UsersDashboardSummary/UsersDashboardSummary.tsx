@@ -3,7 +3,7 @@ import userSummaryUsers from "../../Assets/Icons/usersSummaryUsers.svg";
 import userSummaryActiveUsers from "../../Assets/Icons/usersSummaryActiveUsers.svg";
 import usersSummaryUsersWithLoan from "../../Assets/Icons/usersSummaryUsersWithLoans.svg";
 import usersSummaryUsersWithSavings from "../../Assets/Icons/usersSummaryUsersWithSavings.svg";
-import Card from "../../Components/Card/Card";
+import Card from "../../Components/ui-components/Card/Card";
 import { useContext } from "react";
 import { AppContext } from "../../Context/AppContext";
 import { AppContextValues } from "../../Utilities/types";

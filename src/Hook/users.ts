@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchUsers, fetchUserDetails } from "../API/api";
+import { fetchUsers, fetchUserDetails } from "../Api/api";
 import { User } from "../Utilities/types";
 
 export const useUsers = () => {

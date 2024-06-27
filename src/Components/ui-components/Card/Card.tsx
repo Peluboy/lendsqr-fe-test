@@ -1,4 +1,4 @@
-import { CardProps } from "../../Utilities/types";
+import { CardProps } from "../../../Utilities/types";
 import classes from "./Card.module.css";
 
 const Card = ({ children }: CardProps) => {

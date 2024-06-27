@@ -3,7 +3,7 @@ import classes from "./Dropdown.module.css";
 import { useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import { DropdownProps } from "../../Utilities/types";
+import { DropdownProps } from "../../../Utilities/types";
 
 const Dropdown = (props: DropdownProps) => {
   const [isActive, setIsActive] = useState(false);

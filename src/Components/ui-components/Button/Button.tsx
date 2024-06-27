@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Button.module.css";
-import { ButtonProps } from "../../Utilities/types";
+import { ButtonProps } from "../../../Utilities/types";
 
 const Button = ({
   children,

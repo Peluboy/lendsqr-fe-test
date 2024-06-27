@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Input.module.css";
-import { InputProps } from "../../Utilities/types";
+import { InputProps } from "../../../Utilities/types";
 
 const Input = ({
   type,

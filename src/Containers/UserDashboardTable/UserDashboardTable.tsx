@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
-import Card from '../../Components/Card/Card';
+import Card from '../../Components/ui-components/Card/Card';
 import classes from './UserDashboardTable.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';

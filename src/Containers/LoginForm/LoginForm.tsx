@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../../Components/Button/Button";
-import Input from "../../Components/Input/Input";
+import Button from "../../Components/ui-components/Button/Button";
+import Input from "../../Components/ui-components/Input/Input";
 import {
   AuthContextValue,
   AuthUserContext,

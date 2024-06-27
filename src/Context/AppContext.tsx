@@ -1,11 +1,11 @@
 import { createContext } from "react";
 import { useUsers } from "../Hook/users";
-import { AppContextProps, AppContextValues, User } from "../Utilities/types";
+import { AppContextProps, AppContextValues } from "../Utilities/types";
 
 export const AppContext = createContext<AppContextValues | null>(null);
 
 const AppContextProvider = ({ children }: AppContextProps) => {
-  const { users, setUsers, isSendingRequest, selectedUser, getUserDetails } = useUsers(); // Include setUsers here
+  const { users, setUsers, isSendingRequest, selectedUser, getUserDetails } = useUsers();
 
   const totalUsers = users.length;
   const totalActiveUsers = users.filter((user) => user.status === "Active").length;
@@ -19,7 +19,7 @@ const AppContextProvider = ({ children }: AppContextProps) => {
         searchValue: "",
         setSearchValue: () => {},
         users,
-        setUsers, // Provide setUsers here
+        setUsers,
         isSendingRequest,
         totalUsers,
         totalActiveUsers,
