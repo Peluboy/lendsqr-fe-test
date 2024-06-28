@@ -4,6 +4,7 @@ import { User } from '../Utilities/types';
 
 const useUsers = () => {
   const [users, setUsers] = useState<User[]>([]); // Assuming User type is defined
+  const [organizations, setOrganizations] = useState<string[]>([]);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isSendingRequest, setIsSendingRequest] = useState(false);
 
@@ -14,6 +15,17 @@ const useUsers = () => {
       try {
         const fetchedUsers = await fetchUsers();
         setUsers(fetchedUsers);
+        const orgs = [
+          "Lendstar",
+          "Lendsqr",
+          "Irorun",
+          "Kredi",
+          "Urgent10k",
+          "Blockacash",
+          "Snapcash",
+          "A1Credit",
+        ];
+        setOrganizations(orgs);
       } catch (error) {
         console.error('Error fetching users:', error);
       } finally {
@@ -47,6 +59,7 @@ const useUsers = () => {
     isSendingRequest,
     selectedUser,
     getUserDetails,
+    organizations, // Add this line to return organizations
   };
 };
 

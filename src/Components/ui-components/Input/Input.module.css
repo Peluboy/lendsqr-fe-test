@@ -70,6 +70,19 @@
   transform: translateY(-0.8em) scale(0.7);
 }
 
+.formInputSubClass > .textInput {
+  border: 1px solid rgba(84, 95, 125, 0.15);
+  background-color: transparent;
+  border-radius: 6px;
+  width: 100%;
+  height: 30px;
+  margin: 6px 0px;
+  padding: 1rem;
+  font-size: 13px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .inputSubClass .textInput {
     width: 100%;

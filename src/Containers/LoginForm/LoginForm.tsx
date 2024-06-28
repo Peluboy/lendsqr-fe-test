@@ -92,7 +92,6 @@ const LoginForm = () => {
             type="text"
             placeholder=" "
             id="email"
-            htmlFor="email"
             onChange={(event) => {
               emailChangeHandler(event);
             }}
@@ -112,7 +111,6 @@ const LoginForm = () => {
             type={displayPassword ? "text" : "password"}
             placeholder=" "
             id="password"
-            htmlFor="password"
             onChange={(event) => {
               passwordChangeHandler(event);
             }}

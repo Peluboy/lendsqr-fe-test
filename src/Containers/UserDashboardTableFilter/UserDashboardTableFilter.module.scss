@@ -1,0 +1,57 @@
+
+.modalOverlay {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #545f7d;
+    position: absolute;
+    top: 90px;
+    background: #ffffff;
+    z-index: 10;
+    border: 1px solid rgba(84, 95, 125, 0.152);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 6px;
+    padding: 20px;
+    animation: appear 0.3s ease-in-out;
+  
+  .modalOverlay > div {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .modalBody > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 8px;
+  }
+
+  .modalFooter{
+    display: flex;
+    gap: 1rem;
+    margin-top: 20px;
+
+    button:nth-child(1){
+      padding: 8px 20px;
+      background: white;
+      border-radius: 6px;
+      border: 1px solid var(--secondaryColor);
+      color: var(--secondaryColor);
+      font-size: 12px;
+    }
+    button:nth-child(2){
+      padding: 8px 20px;
+      background: var(--primaryColor);
+      border-radius: 6px;
+      border: 1px solid var(--primaryColor);
+      color: white;
+      font-size: 12px;
+    }
+  }
+}
+ 

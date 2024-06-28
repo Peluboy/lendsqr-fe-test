@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Input.module.css";
 import { InputProps } from "../../../Utilities/types";
 
-const Input = ({
+const FormInput = ({
   type,
   onChange,
   placeholder,
@@ -14,7 +14,7 @@ const Input = ({
   id,
 }: InputProps) => {
   return (
-    <div className={classes.inputSubClass}>
+    <div className={classes.formInputSubClass}>
       <input
         type={type}
         name={name}
@@ -27,7 +27,7 @@ const Input = ({
         onBlur={onBlur}
         id={id}
       />
-      <label className={classes.inputLabel}
+      <label className={classes.formInputLabel}
       >
         {children}
       </label>
@@ -35,4 +35,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default FormInput;

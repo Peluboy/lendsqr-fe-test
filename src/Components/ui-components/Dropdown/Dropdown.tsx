@@ -1,27 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import classes from "./Dropdown.module.css";
-import { useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { DropdownProps } from "../../../Utilities/types";
 
-const Dropdown = (props: DropdownProps) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, selected, setSelected, title }) => {
   const [isActive, setIsActive] = useState(false);
-  const [optionsState, setOptionsState] = useState(props.options);
 
-  // ref
-  const dropdownRef = useRef<HTMLDivElement>(null!);
-  const dropdownItem = useRef<HTMLElement>(null!);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    dropdownRef?.current?.focus();
+    if (isActive && dropdownRef.current) {
+      dropdownRef.current.focus();
+    }
   }, [isActive]);
 
   useEffect(() => {
     const removeDropdownHandler = (e: MouseEvent) => {
-      if (!dropdownRef?.current?.contains(e.target as Node)) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIsActive(false);
-      } else {
       }
     };
     document.addEventListener("mousedown", removeDropdownHandler);
@@ -34,47 +31,30 @@ const Dropdown = (props: DropdownProps) => {
   return (
     <div className={classes.dropdown} ref={dropdownRef}>
       <div
-        // tabIndex={0}
         className={classes.dropdownButton}
-        onClick={() => {
-          setIsActive(!isActive);
-          // document.getElementById("dropdownIcon").style =
-          //   "transform: rotate(0deg)";
-          // if (!isActive) {
-          //   document.getElementById('dropdownIcon').style =
-          //     'transform: rotate(-180deg)';
-          // }
-        }}
+        onClick={() => setIsActive(!isActive)}
         tabIndex={0}
       >
-        {props.selected || props.title}
-        <i>
-          <FontAwesomeIcon
-            icon={faAngleDown}
-            color="#3C393A"
-            id="dropdownIcon"
-          />
-        </i>
+        {selected || title}
+        <FontAwesomeIcon icon={faAngleDown} color="#3C393A" id="dropdownIcon" />
       </div>
       {isActive && (
-        <div className={classes.dropdownContent} onClick={props.onClick}>
-          {props.options.length >= 1 ? (
-            props.options.map((option, i) => {
-              return (
-                <div
-                  key={i}
-                  className={classes.dropdownItem}
-                  onClick={() => {
-                    props.setSelected(option);
-                    setIsActive(false);
-                  }}
-                >
-                  {option.slice(0, 1).toUpperCase() + option.slice(1)}
-                </div>
-              );
-            })
+        <div className={classes.dropdownContent}>
+          {options.length >= 1 ? (
+            options.map((option, i) => (
+              <div
+                key={i}
+                className={classes.dropdownItem}
+                onClick={() => {
+                  setSelected(option);
+                  setIsActive(false);
+                }}
+              >
+                {option}
+              </div>
+            ))
           ) : (
-            <p className={`${classes.dropdownItem2}`}>No matching Items</p>
+            <p className={`${classes.dropdownItem2}`}>Loading...</p>
           )}
         </div>
       )}

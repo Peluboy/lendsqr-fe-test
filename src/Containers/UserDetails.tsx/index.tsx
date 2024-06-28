@@ -1,6 +1,4 @@
-// UserDetails.tsx
-
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../../Context/AppContext';
 import classes from './UserDetails.module.scss';
 import backIcon from "../../Assets/Icons/back.svg"
@@ -16,6 +14,10 @@ const UserDetails = ({ onBack }: { onBack: () => void }) => {
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
+  };
+
+  const formatAmount = (amount: number) => {
+    return amount.toLocaleString('en-US');
   };
 
   return (
@@ -43,14 +45,14 @@ const UserDetails = ({ onBack }: { onBack: () => void }) => {
             </div>
             <div className={classes.divider}></div>
             <div className={classes.customerName}>
-              <h3>₦{selectedUser.accountBalance}</h3>
+              <h3>₦{formatAmount(selectedUser.accountBalance)}</h3>
               <p>{selectedUser.accountNumber}/{selectedUser.bankAccounts}</p>
             </div>
           </div>
           <Tabs onTabClick={handleTabClick} />
         </Card>
-
-          <Card>
+        <div className={classes.activeTabs}>
+        <Card>
           {activeTab === 'General Details' && (
             <div className={classes.userInformation}>
                 <div className={classes.personalInformation}>
@@ -114,11 +116,11 @@ const UserDetails = ({ onBack }: { onBack: () => void }) => {
                     </div>
                     <div className={classes.detailsStyle}>
                       <span>MONTHLY INCOME</span>
-                      <p>₦{selectedUser.lower.income} - ₦{selectedUser.higher.income}</p>
+                      <p>₦{formatAmount(selectedUser.lower.income)} - ₦{formatAmount(selectedUser.higher.income)}</p>
                     </div>
                     <div className={classes.detailsStyle}>
                       <span>LOAN REPAYMENT</span>
-                      <p>₦{selectedUser.education.loanPayment}</p>
+                      <p>₦{formatAmount(selectedUser.education.loanPayment)}</p>
                     </div>
                 
                   </div>
@@ -164,6 +166,8 @@ const UserDetails = ({ onBack }: { onBack: () => void }) => {
             </div>
             )}
           </Card>
+        </div>
+         
       </div>
     </div>
   );

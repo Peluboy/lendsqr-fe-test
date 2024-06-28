@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from 'react';
+import { useState, useRef, useContext, useEffect } from 'react';
 import Card from '../../Components/ui-components/Card/Card';
 import classes from './UserDashboardTable.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,22 +12,30 @@ import UserPopUpMenu from '../../Components/ui-components/UserPopUpMenu';
 import UserTableHeader from '../../Components/ui-components/UserTableHeader';
 import TableFilterModal from '../UserDashboardTableFilter/UserDashboardTableFilter';
 import { AppContextValues } from '../../Utilities/types';
+import Pagination from '../../Components/Pagination';
 
 const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => void }) => {
   const { users, setUsers, isSendingRequest } = useContext(AppContext) as AppContextValues;
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const totalPages = Math.ceil(users.length / itemsPerPage);
   const popUpRef = useRef<HTMLDivElement>(null!);
+  const filterModalRef = useRef<HTMLDivElement>(null!);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [filteredUsers, setFilteredUsers] = useState(users);
+
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users]);
 
   useEffect(() => {
     const removeDropdownHandler = (e: MouseEvent) => {
       if (!popUpRef?.current?.contains(e.target as Node)) {
-        const modifiedUsers = users.map((user) => {
-          return { ...user, isActive: false };
-        });
+        const modifiedUsers = users.map((user) => ({ ...user, isActive: false }));
         setUsers(modifiedUsers);
+      }
+      if (isFilterModalOpen && !filterModalRef?.current?.contains(e.target as Node)) {
+        setIsFilterModalOpen(false);
       }
     };
     document.addEventListener("mousedown", removeDropdownHandler);
@@ -35,7 +43,7 @@ const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => 
     return () => {
       document.removeEventListener("mousedown", removeDropdownHandler);
     };
-  }, [popUpRef, users, setUsers]);
+  }, [popUpRef, filterModalRef, users, setUsers, isFilterModalOpen]);
 
   const userStatusHandler = (index: number, status: string) => {
     setUsers(users.map((user, i) => (i === index ? { ...user, status } : user)));
@@ -43,10 +51,15 @@ const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => 
 
   const indexOfLastUser = currentPage * itemsPerPage;
   const indexOfFirstUser = indexOfLastUser - itemsPerPage;
-  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleItemsPerPageChange = (itemsPerPage: number) => {
+    setItemsPerPage(itemsPerPage);
+    setCurrentPage(1);
   };
 
   const handleFilterClick = () => {
@@ -54,8 +67,17 @@ const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => 
   };
 
   const handleFilter = (filters: any) => {
-    // Implement the filtering logic
-    console.log(filters);
+    const newFilteredUsers = users.filter(user => {
+      return (
+        (!filters.organization || user.orgName.includes(filters.organization)) &&
+        (!filters.username || user.fullName.includes(filters.username)) &&
+        (!filters.email || user.office.email.includes(filters.email)) &&
+        (!filters.phoneNumber || user.phoneNumber.includes(filters.phoneNumber)) &&
+        (!filters.dateJoined || formatDate(user.createdAt) === filters.dateJoined) &&
+        (!filters.status || user.status.includes(filters.status))
+      );
+    });
+    setFilteredUsers(newFilteredUsers);
   };
 
   return (
@@ -64,7 +86,7 @@ const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => 
         <div className={classes.container}>
           <UserTableHeader onFilterClick={handleFilterClick} />
           <div className={classes.userDashboardTableBody}>
-            {isSendingRequest && users.length < 1 ? (
+            {isSendingRequest ? (
               <div className={classes.loading}>
                 <CircularProgress size="1rem" color="inherit" style={{ color: "#39CDCC" }} />
               </div>
@@ -76,8 +98,8 @@ const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => 
                     <div className={classes.userDashboardTableBodyItem}>
                       <div>{user?.orgName}</div>
                       <div onClick={() => onViewDetails(user.id)}>{user.fullName}</div>
-                      <div onClick={() => onViewDetails(user.id)}>{user.office.email}{user.education.officeEmail}</div>
-                      <div onClick={() => onViewDetails(user.id)}>{user.phoneNumber}</div>
+                      <div onClick={() => onViewDetails(user.id)}>{user.office.email}</div>
+                      <div>{user.phoneNumber}</div>
                       <div>{formatDate(user.createdAt)}</div>
                       <div>
                         <span style={USER_STATUS_STYLES[user.status]}>
@@ -104,27 +126,21 @@ const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => 
           </div>
         </div>
       </Card>
-      <div className={classes.pagination}>
-        <span>
-          Showing {indexOfFirstUser + 1} out of {users.length}
-        </span>
-        <div className={classes.pageButtons}>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={currentPage === page ? classes.activePage : ""}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        itemsPerPage={itemsPerPage}
+        totalItems={users.length}
+        onItemsPerPageChange={handleItemsPerPageChange}
+      />
       {isFilterModalOpen && (
-        <TableFilterModal
-          onClose={() => setIsFilterModalOpen(false)}
-          onFilter={handleFilter}
-        />
+        <div ref={filterModalRef}>
+          <TableFilterModal
+            onClose={() => setIsFilterModalOpen(false)}
+            onFilter={handleFilter}
+          />
+        </div>
       )}
     </div>
   );
