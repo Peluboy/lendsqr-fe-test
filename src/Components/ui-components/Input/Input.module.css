@@ -38,7 +38,7 @@
 }
 
 .textInput:focus {
-  border: 2px solid #39cdcc;
+  border: 2px solid var(--primaryColor);
   outline: none;
 }
 

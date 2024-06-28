@@ -1,69 +1,28 @@
-/* Fonts Import */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Rubik+Iso&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-@font-face {
-  font-family: "Metropolis";
-  src: url("./Assets/Fonts/Metropolis/Metropolis-Thin.otf");
-  font-style: normal;
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Metropolis";
-  src: url("./Assets/Fonts/Metropolis/Metropolis-Regular.otf");
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Metropolis";
-  src: url("./Assets/Fonts/Metropolis/Metropolis-Medium.otf");
-  font-style: normal;
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Metropolis";
-  src: url("./Assets/Fonts/Metropolis/Metropolis-SemiBold.otf");
-  font-style: normal;
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: "Metropolis";
-  src: url("./Assets/Fonts/Metropolis/Metropolis-Bold.otf");
-  font-style: normal;
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Metropolis";
-  src: url("./Assets/Fonts/Metropolis/Metropolis-ExtraBold.otf");
-  font-style: normal;
-  font-weight: 800;
-}
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Universal styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
 }
 
-/* general Body styles */
 body {
   margin: 0;
-  font-family: "Metropolis", "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--backGroundBlack);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+p {
+  color: #545F7D;
 }
+
 
 :root {
   --hoverBackgroundColor: #f3fcfc;
+  --primaryColor: #39CDCC;
+  --secondaryColor: #213f7d;
 }

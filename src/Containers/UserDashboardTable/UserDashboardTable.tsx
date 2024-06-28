@@ -75,7 +75,7 @@ const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => 
                   <div className={classes.userDashBoardTableBodyItemOuter} key={user.id}>
                     <div className={classes.userDashboardTableBodyItem}>
                       <div>{user?.orgName}</div>
-                      <div onClick={() => onViewDetails(user.id)}>{user.userName}</div>
+                      <div onClick={() => onViewDetails(user.id)}>{user.fullName}</div>
                       <div onClick={() => onViewDetails(user.id)}>{user.office.email}{user.education.officeEmail}</div>
                       <div onClick={() => onViewDetails(user.id)}>{user.phoneNumber}</div>
                       <div>{formatDate(user.createdAt)}</div>

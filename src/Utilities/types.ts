@@ -39,23 +39,30 @@ export type User = {
     orgName: string;
     userName: string;
     email: string;
+    firstName: string;
+    lastName: string;
+    fullName: string;
+    rating: number;
+    customerId: string;
     phoneNumber: string;
     createdAt: string;
     profile: {
-      firstName: string;
-      lastName: string;
       gender: string;
       bvn: string;
       avatar: string;
       address: string;
+      maritalStatus: string;
+      children: string;
     };
     accountBalance: string;
     accountNumber: string;
+    bankAccounts: string;
     guarantor: {
       firstName: string;
       lastName: string;
-      gender: string;
-      address: string;
+      relationship: string;
+      email: string;
+      phoneNumber: number;
     };
     education: {
       duration: string;

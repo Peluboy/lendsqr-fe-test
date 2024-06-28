@@ -19,7 +19,7 @@
   font-size: 40px;
   line-height: 55px;
   letter-spacing: -0.04em;
-  color: #213f7d;
+  color: var(--secondaryColor);
 }
 
 .header > p {
@@ -36,7 +36,7 @@
   line-height: 16px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #39cdcc;
+  color: var(--primaryColor);
   margin-top: 1rem;
   cursor: pointer;
 }
@@ -52,7 +52,7 @@
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #39cdcc;
+  color: var(--primaryColor);
   position: absolute;
   top: 0;
   bottom: 0;

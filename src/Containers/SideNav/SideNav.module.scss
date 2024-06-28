@@ -1,12 +1,11 @@
 .switchOrganisation,
 .dashboard {
   padding: 10px 30px;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: #213f7d;
+  color: var(--secondaryColor);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -15,21 +14,19 @@
 }
 
 .switchOrganisation {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: #213f7d;
+  color: var(--secondaryColor);
 }
 
 .dashboard {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: #213f7d;
+  color: var(--secondaryColor);
   opacity: 0.7;
 }
 
