@@ -1,3 +1,17 @@
+.container {
+  left: 0;
+  height: 100%;
+  width: 264px;
+  background-color: #fff;
+  overflow-y: scroll;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .switchOrganisation,
 .dashboard {
   padding: 10px 30px;
@@ -32,4 +46,31 @@
 
 .navListContainer {
   margin: 30px 0;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    position: fixed;
+    top: 0;
+  z-index: 1000;
+    transform: translateX(-100%); 
+  }
+
+  .container.open {
+    transform: translateX(0);
+    box-shadow: 7px 0 5px rgba(0, 0, 0, 0.02);
+  }
+ }
+@media screen and (max-width: 767px) {
+  .container {
+    position: fixed;
+    top: 0;
+  z-index: 1000;
+    transform: translateX(-100%); 
+  }
+
+  .container.open {
+    transform: translateX(0);
+    box-shadow: 7px 0 5px rgba(0, 0, 0, 0.02);
+  }
 }

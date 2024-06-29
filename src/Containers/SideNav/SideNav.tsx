@@ -1,18 +1,15 @@
+import React from "react";
 import classes from "./SideNav.module.scss";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import switchOrganization from "../../Assets/Icons/switchOrganization.svg";
 import home from "../../Assets/Icons/home.svg";
-import {
-  businessesNavItems,
-  customerNavItems,
-  settingsNavItems,
-} from "../../Utilities/NavItems";
+import { businessesNavItems, customerNavItems, settingsNavItems } from "../../Utilities/NavItems";
 import SideNavListContainer from "../../Components/SideNavListContainer/SideNavListContainer";
 
-const SideNav = () => {
+const SideNav = ({ isOpen }: any) => {
   return (
-    <section className={classes.container}>
+    <section className={`${classes.container} ${isOpen ? classes.open : ""}`}>
       <div className={classes.switchOrganisation}>
         <span>
           <img src={switchOrganization} alt="Switch Organization" />

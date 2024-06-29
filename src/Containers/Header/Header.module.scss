@@ -6,6 +6,8 @@
   padding: 30px;
 }
 
+
+
 .logoSection > img {
   width: 120px;
 }
@@ -104,6 +106,7 @@
     display: none;
   }
   .hamburgerMenu {
+    cursor: pointer;
     display: block;
     margin-left: auto;
     font-size: 1.2rem;

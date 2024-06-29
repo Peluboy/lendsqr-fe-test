@@ -23,3 +23,8 @@
     border-bottom: 2px solid var(--primaryColor);
   }
   
+  @media screen and (max-width: 767px) {
+    .tabsContainer {
+     overflow-x: scroll;
+    }
+  }

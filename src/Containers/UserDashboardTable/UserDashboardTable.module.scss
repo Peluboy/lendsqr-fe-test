@@ -9,11 +9,13 @@
 
 .outerContainer {
   max-width: 100%;
+  overflow-x: auto; /* Add this */
 }
 
 .container {
   padding: 20px 25px;
   position: relative;
+  // overflow-x: auto;
 }
 
 .userDashBoardTableBodyItemOuter {
@@ -159,4 +161,46 @@
   font-size: 13px;
   color: #545f7d;
   margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 20px 20px 10px 20px;
+    position: relative;
+    overflow-x: auto;
+  }
+  
+  .userPopUpMenu {
+    right: -5px;
+    top: 45px;
+  }
+
+  .userDashboardTableBodyItem > div {
+    overflow-x: auto;
+  }
+
+  .userDashboardTableHeader, .userDashboardTableBodyItem {
+    width: 820px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 20px 20px 10px 20px;
+    position: relative;
+    overflow-x: auto;
+  }
+  
+  .userPopUpMenu {
+    right: -5px;
+    top: 45px;
+  }
+
+  .userDashboardTableBodyItem > div {
+    overflow-x: auto;
+  }
+
+  .userDashboardTableHeader, .userDashboardTableBodyItem {
+    width: 820px;
+  }
 }

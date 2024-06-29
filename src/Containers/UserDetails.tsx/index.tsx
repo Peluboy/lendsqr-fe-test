@@ -160,7 +160,6 @@ const UserDetails = ({ onBack }: { onBack: () => void }) => {
                       <span>RELATIONSHIP</span>
                       <p>{selectedUser.guarantor.relationship}</p>
                     </div>
-                
                   </div>
                 </div>
             </div>

@@ -54,4 +54,18 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .modalOverlay {
+    left: 70px;
+    top: 330px;
+}
+}
+
+@media screen and (max-width: 767px) {
+  .modalOverlay {
+    left: 50px;
+    top: 250px;
+}
+}
  
