@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { fetchUsers } from '../Api/api'; // Import your API functions
 import { User } from '../Utilities/types';
+import { fetchUsers } from '../Api/fetchUsers';
 
 const useUsers = () => {
-  const [users, setUsers] = useState<User[]>([]); // Assuming User type is defined
+  const [users, setUsers] = useState<User[]>([]); 
   const [organizations, setOrganizations] = useState<string[]>([]);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isSendingRequest, setIsSendingRequest] = useState(false);
