@@ -1,7 +1,23 @@
 import { useEffect, useState } from 'react';
+import axios from "axios";
 import { User } from '../Utilities/types';
-import fetchUsers from '../api/fetchUsers';
 
+// API function to fetch users
+const API_KEY = "eb1ec020";
+const BASE_URL = "https://api.mockaroo.com/api/82a4a390";
+
+// Fetch 500 users
+const fetchUsers = async (): Promise<User[]> => {
+  try {
+    const response = await axios.get(`${BASE_URL}?count=500&key=${API_KEY}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw error;
+  }
+};
+
+// Custom hook to use users
 const useUsers = () => {
   const [users, setUsers] = useState<User[]>([]); 
   const [organizations, setOrganizations] = useState<string[]>([]);
