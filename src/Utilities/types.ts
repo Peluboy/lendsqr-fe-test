@@ -111,6 +111,8 @@ export type User = {
     selectedOrganization: string;
     setSelectedOrganization: React.Dispatch<React.SetStateAction<string>>;
     organizationsArray: string[];
+    filteredData: User[];
+  filterData: (value: string) => void;
   };
 
  export interface TableFilterModalProps {

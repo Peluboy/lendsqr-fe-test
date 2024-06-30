@@ -8,19 +8,50 @@ import profileImage from "../../Assets/Images/userProfileImage.svg";
 import { AppContext } from "../../Context/AppContext";
 import notificationBell from "../../Assets/Icons/notificationBell.svg";
 import { AppContextValues } from "../../Utilities/types";
-import SideNav from "../SideNav/SideNav"; // Ensure correct import path
+import SideNav from "../SideNav/SideNav";
+import { MenuProps } from "antd";
+import {
+  UserOutlined,
+  SettingOutlined,
+  LoginOutlined,
+} from "@ant-design/icons";
 
 const Header = () => {
-  const { searchValue, setSearchValue } = useContext(AppContext) as AppContextValues;
+  const { searchValue, setSearchValue, filterData } = useContext(AppContext) as AppContextValues;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const searchChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
+    const value = event.target.value;
+    setSearchValue(value);
+    filterData(value);
   };
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prevState) => !prevState);
   };
+
+  const handleSidebarClose = () => {
+    setIsSidebarOpen(false);
+  };
+
+  const items: MenuProps["items"] = [
+    {
+      label: "Profile",
+      key: "1",
+      icon: <UserOutlined />,
+    },
+    {
+      label: "Settings",
+      key: "2",
+      icon: <SettingOutlined />,
+    },
+    {
+      label: "Logout",
+      key: "3",
+      icon: <LoginOutlined />,
+      danger: true,
+    },
+  ];
 
   return (
     <>
@@ -56,7 +87,7 @@ const Header = () => {
           <FontAwesomeIcon icon={faBars} />
         </div>
       </section>
-      <SideNav isOpen={isSidebarOpen} />
+      <SideNav isOpen={isSidebarOpen} onClose={handleSidebarClose} />
     </>
   );
 };

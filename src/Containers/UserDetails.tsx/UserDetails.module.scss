@@ -152,57 +152,8 @@
     }
 }
 
-/* Tablets */
 @media screen and (min-width: 767px) and (max-width: 1023px) { 
-  }
-  
-  /* Mobile Phone */
-  @media screen and (max-width: 767px) {
     .userDetailsContainer{
-    
-        .userDetailsTop{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            
-        .usersButton{
-            display: flex;
-            gap: 1rem;
-            cursor: pointer;
-            
-            :nth-child(1){
-                border: 1px solid #E4033B;
-                color: #E4033B;
-                letter-spacing: 1px;
-                font-size: 12px;
-                font-weight: 600;
-                padding: 12px 16px;
-                margin-bottom: 0;
-                border-radius: 8px;
-            }
-    
-            :nth-child(2){
-                border: 1px solid var(--primaryColor);
-                color: var(--primaryColor);
-                letter-spacing: 1px;
-                font-size: 12px;
-                font-weight: 600;
-                padding: 12px 16px;
-                margin-bottom: 0;
-                border-radius: 8px;
-            }
-        }
-        
-        .header {
-            font-style: normal;
-            font-weight: 500;
-            font-size: 24px;
-            line-height: 28px;
-            color: var(--secondaryColor);
-          }
-        }
-    
         .cardTopHeader{
             display: flex;
             flex-direction: column;
@@ -215,10 +166,6 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 4px;
-    
-                p {
-                    font-weight: 500;
-                }
             }
     
             .customerName{
@@ -227,25 +174,7 @@
                 gap: 2px;
                 align-items: center;
     
-                :nth-child(1) {
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 22px;
-                    line-height: 28px;
-                    color: var(--secondaryColor);
-                  }
-    
-                :nth-child(2) {
-                    font-size: 14px;
-                }
-            }
-            .userAvatar{
-                height: 100px;
-                width: 100px;
-                background: #FBFBFB;
-                border-radius: 100%; 
-                margin-right: 20px;
-            }
+              }
     
             .divider{
                display: none;
@@ -253,51 +182,63 @@
         }
     
         .activeTabs{
-            margin-top: 30px;
+            .userInformation{       
+                .personalInformation{ 
+                   .details{
+                        padding-top: 30px;
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-column-gap: 20px;
+                        width: 100%;
+                        grid-row-gap: 20px;
+                   }}
+            }
+        }
+    } 
+  }
+  
+
+@media screen and (max-width: 767px) {
+    .userDetailsContainer{
+        .cardTopHeader{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            gap: 16px;
     
-            .userInformation{
-                padding: 30px;
-        
-                .personalInformation{
-        
-                    h4 {
-                        font-size: 14px;
-                        font-weight: 500;
-                        color: var(--secondaryColor);
-                    }
-        
-                    .details{
+            .usersTier{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+            }
+    
+            .customerName{
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                align-items: center;
+    
+              }
+    
+            .divider{
+               display: none;
+            }
+        }
+    
+        .activeTabs{
+            .userInformation{       
+                .personalInformation{ 
+                   .details{
                         padding-top: 30px;
                         display: grid;
                         grid-template-columns: repeat(2, 1fr);
                         grid-column-gap: 20px;
                         width: 100%;
                         grid-row-gap: 20px;
-        
-                        .detailsStyle{
-                            display: flex;
-                            flex-direction: column;
-                            gap: 6px;
-        
-                            span {
-                                font-size: 10px;
-                                font-weight: 400;
-                            }
-        
-                            p {
-                                font-weight: 500;
-                                font-size: 13px;
-                            }
-                        }
-                    }
-        
-                    .horizontalDivider{
-                        width: 100%;
-                        border: 1px solid #8b909f31;
-                    margin: 30px 0;
-                    }
-                }
+                   }}
             }
         }
-    } 
+    }  
   }

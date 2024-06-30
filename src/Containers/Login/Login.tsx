@@ -1,6 +1,6 @@
 import LoginForm from "../LoginForm/LoginForm";
 import LoginPictureSection from "../LoginPictureSection/LoginPictureSection";
-import classes from "./Login.module.css";
+import classes from "./Login.module.scss";
 
 const Login = () => {
   return (

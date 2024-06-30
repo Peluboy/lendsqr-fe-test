@@ -9,7 +9,7 @@ const LoginPictureSection = () => {
         <img src={lendsqrLogo} alt="lendsqr logo" />
       </div>
       <div className={classes.loginImageSection}>
-        <img src={lensdqrLoginImage} alt="lendsqr logo" />
+        <img src={lensdqrLoginImage} alt="lendsqr image" />
       </div>
     </section>
   );

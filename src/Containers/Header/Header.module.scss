@@ -4,9 +4,6 @@
   align-items: center;
   gap: 168px;
   padding: 30px;
-}
-
-
 
 .logoSection > img {
   width: 120px;
@@ -90,12 +87,13 @@
 .hamburgerMenu {
   display: none;
 }
+}
 
-/* Tablets */
+
 @media screen and (min-width: 767px) and (max-width: 1023px) {
   .container {
     padding: 30px;
-  }
+  
   .logoSection > img {
     width: 120px;
   }
@@ -113,12 +111,12 @@
     color: var(--secondaryColor);
   }
 }
+}
 
-/* Mobile Phone */
 @media screen and (max-width: 767px) {
   .container {
     padding: 24px;
-  }
+  
   .logoSection > img {
     width: 120px;
   }
@@ -134,4 +132,5 @@
     font-size: 1.2rem;
     color: var(--secondaryColor);
   }
+}
 }

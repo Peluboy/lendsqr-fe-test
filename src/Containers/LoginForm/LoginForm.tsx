@@ -2,60 +2,36 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../Components/ui-components/Button/Button";
 import Input from "../../Components/ui-components/Input/Input";
-import {
-  AuthContextValue,
-  AuthUserContext,
-} from "../../Context/AuthUserContext";
-import classes from "./LoginForm.module.css";
+import { AuthContextValue, AuthUserContext } from "../../Context/AuthUserContext";
+import classes from "./LoginForm.module.scss";
 import lendsqrLogo from "../../Assets/Images/lendsqrLogo.svg";
 
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
 const LoginForm = () => {
-  // Context
   const { setUser, user } = useContext(AuthUserContext) as AuthContextValue;
-
-  // Navigation
   const navigate = useNavigate();
-
-  // States
   const [email, setEmail] = useState<string>("");
   const [emailIsValid, setEmailIsValid] = useState<boolean>(true);
   const [password, setPassword] = useState<string>("");
   const [passwordIsValid, setPasswordIsValid] = useState<boolean>(true);
-  const [buttonIsValid, setButtonIsValid] = useState(
-    emailIsValid && passwordIsValid
-  );
+  const [buttonIsValid, setButtonIsValid] = useState(emailIsValid && passwordIsValid);
   const [displayPassword, setDisplayPassword] = useState<boolean>(false);
 
   const emailChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
-
-    if (!event.target.value.trim().includes("@") || !event.target.value) {
-      setEmailIsValid(false);
-    } else {
-      setEmailIsValid(true);
-    }
+    setEmailIsValid(emailRegex.test(event.target.value.trim()));
   };
 
-  const passwordChangeHandler = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const passwordChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
-
-    if (event.target.value.length < 8) {
-      setPasswordIsValid(false);
-    } else {
-      setPasswordIsValid(true);
-    }
+    setPasswordIsValid(passwordRegex.test(event.target.value.trim()));
   };
 
-  const loginButtonClickHandler = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  const loginButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setUser({
-      email,
-      password,
-    });
+    setUser({ email, password });
     localStorage.setItem("user", JSON.stringify(user));
     navigate("/dashboard/users");
   };
@@ -64,15 +40,8 @@ const LoginForm = () => {
     setDisplayPassword(!displayPassword);
   };
 
-  //   Effects
   useEffect(() => {
-    if (emailIsValid && passwordIsValid) {
-      setButtonIsValid(true);
-    } else {
-      setButtonIsValid(false);
-    }
-
-    // eslint-disable-next-line
+    setButtonIsValid(emailIsValid && passwordIsValid);
   }, [emailIsValid, passwordIsValid]);
 
   return (
@@ -85,60 +54,47 @@ const LoginForm = () => {
         <p>Enter details to login.</p>
       </div>
       <div className={classes.formSection}>
-        {/* Email Input */}
         <div className={classes.inputSubSection}>
           <Input
             value={email}
             type="text"
             placeholder=" "
             id="email"
-            onChange={(event) => {
-              emailChangeHandler(event);
-            }}
+            onChange={emailChangeHandler}
             invalid={!emailIsValid}
           >
             Email
           </Input>
-          {!emailIsValid && (
-            <span className={classes.warning}>Invalid Email</span>
-          )}
+          {!emailIsValid && <span className={classes.warning}>Invalid Email</span>}
         </div>
 
-        {/* Password Input */}
+        <div>
         <div className={classes.inputSubSection}>
           <Input
             value={password}
             type={displayPassword ? "text" : "password"}
             placeholder=" "
             id="password"
-            onChange={(event) => {
-              passwordChangeHandler(event);
-            }}
+            onChange={passwordChangeHandler}
             invalid={!passwordIsValid}
           >
             Password
           </Input>
-          {!passwordIsValid && (
-            <span className={classes.warning}>Invalid Password</span>
-          )}
-          <div
-            className={classes.displayPasswordToggler}
-            onClick={displayPasswordHandler}
-          >
+          <div className={classes.displayPasswordToggler} onClick={displayPasswordHandler}>
             {displayPassword ? "HIDE" : "SHOW"}
           </div>
         </div>
 
-        {/* Forgot Password */}
+          <small className={classes.passwordInstructions}>
+            Password: 8+ chars, 1+ letter, 1+ number
+          </small>
+          {!passwordIsValid && <span className={classes.warning}>Invalid Password</span>}
+          
+        </div>
+
         <div className={classes.forgotPassword}>FORGOT PASSWORD?</div>
 
-        {/* Button */}
-        <Button
-          onClick={(event) => {
-            loginButtonClickHandler(event);
-          }}
-          disabled={!buttonIsValid}
-        >
+        <Button onClick={loginButtonClickHandler} disabled={!buttonIsValid}>
           LOG IN
         </Button>
       </div>

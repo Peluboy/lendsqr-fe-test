@@ -1,19 +1,23 @@
 .container {
   height: 100vh;
   display: flex;
+  gap: 5rem;
   align-items: stretch;
+  justify-content: end;
   padding: 0 4.25rem;
-}
 
 .imageSection,
 .formSection {
   width: 50%;
   height: 100%;
 }
+}
 
-/* MEdia queries */
-/* Tablets */
 @media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    gap: 2rem;
+    padding: 0 2rem; 
+
   .imageSection {
     display: none;
   }
@@ -22,9 +26,13 @@
     width: 100%;
   }
 }
+}
 
-/* Phones */
 @media screen and (max-width: 767px) {
+  .container {
+    gap: 1rem; 
+    padding: 0 2rem;
+
   .imageSection {
     display: none;
   }
@@ -32,4 +40,5 @@
   .formSection {
     width: 100%;
   }
+}
 }

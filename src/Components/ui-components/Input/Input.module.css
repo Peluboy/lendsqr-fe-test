@@ -3,15 +3,13 @@
 }
 
 .inputSubClass > .textInput {
-  border: 2px solid rgba(84, 95, 125, 0.15);
+  border: 1.5px solid rgba(84, 95, 125, 0.15);
   background-color: transparent;
   border-radius: 5px;
   width: 100%;
   height: 50px;
   margin: 12px 0px;
   padding: 1rem;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-weight: 400;
   font-size: 14px;
@@ -26,14 +24,12 @@
   height: 50px;
   margin: 12px 0px;
   padding: 1rem;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
   position: relative;
-  border: 2px solid red;
+  border: 1.5px solid red;
   transition: all 0.3s ease-in-out;
 }
 
@@ -62,12 +58,12 @@
 
 .textInput:focus + .inputLabel,
 .textInput:not(:placeholder-shown) + .inputLabel {
-  transform: translateY(-0.8em) scale(0.7);
+  transform: translateY(-0.7em) scale(0.7);
 }
 
 .textInput_invalid:focus + .inputLabel,
 .textInput_invalid:not(:placeholder-shown) + .inputLabel {
-  transform: translateY(-0.8em) scale(0.7);
+  transform: translateY(-0.7em) scale(0.7);
 }
 
 .formInputSubClass > .textInput {
