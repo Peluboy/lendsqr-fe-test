@@ -1,19 +1,17 @@
-// api.ts
 import axios from "axios";
 import { User } from "../Utilities/types";
 
-// Fetch all users
-export const fetchUsers = async (): Promise<User[]> => {
-  const response = await axios.get("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users");
-  return response.data.map((user: User) => ({
-    ...user,
-    isActive: false,
-    status: "Active"
-  }));
-};
+const API_KEY = "eb1ec020";
+const BASE_URL = "https://api.mockaroo.com/api/82a4a390";
+// https://api.mockaroo.com/api/82a4a390?count=500&key=eb1ec020
 
-// Fetch user details by ID
-export const fetchUserDetails = async (id: number): Promise<User> => {
-  const response = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${id}`);
-  return response.data;
+// Fetch 500 users
+export const fetchUsers = async (): Promise<User[]> => {
+  try {
+    const response = await axios.get(`${BASE_URL}?count=500&key=${API_KEY}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw error;
+  }
 };

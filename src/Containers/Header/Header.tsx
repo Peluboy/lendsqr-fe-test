@@ -1,20 +1,19 @@
 import React, { useContext, useState } from "react";
 import classes from "./Header.module.scss";
 import lendsqrLogo from "../../Assets/Images/lendsqrLogo.svg";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
 import profileImage from "../../Assets/Images/userProfileImage.svg";
 import { AppContext } from "../../Context/AppContext";
-import notificationBell from "../../Assets/Icons/notificationBell.svg";
 import { AppContextValues } from "../../Utilities/types";
 import SideNav from "../SideNav/SideNav";
-import { MenuProps } from "antd";
+import { Avatar, Dropdown, MenuProps, Space } from "antd";
 import {
   UserOutlined,
   SettingOutlined,
   LoginOutlined,
 } from "@ant-design/icons";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 const Header = () => {
   const { searchValue, setSearchValue, filterData } = useContext(AppContext) as AppContextValues;
@@ -53,6 +52,10 @@ const Header = () => {
     },
   ];
 
+  const menuProps = {
+    items
+  };
+
   return (
     <>
       <section className={classes.container}>
@@ -71,16 +74,18 @@ const Header = () => {
           </button>
         </div>
         <div className={classes.profileAndDocs}>
-          <Link to="/">Docs</Link>
+        <a href="https://github.com/Peluboy/lendsqr-fe-test" target="_blank">Docs</a>
+          <IoMdNotificationsOutline fontSize={26} color="#213F7D" className={classes.notifiIcon}/>
           <div>
-            <img src={notificationBell} alt="notification bell" />
-          </div>
-          <div>
-            <img src={profileImage} alt="Profile" />
-            <span>Adedeji</span>
-            <span>
-              <FontAwesomeIcon icon={faCaretDown} />
-            </span>
+            <Avatar size={40} src={profileImage} />
+            <Dropdown menu={menuProps}>
+              <Space>
+                <div className={classes.profileDropdown}>
+                  <span className={classes.userName}>Adedeji</span>
+                  <FontAwesomeIcon icon={faCaretDown} />
+                </div>
+            </Space>
+          </Dropdown>
           </div>
         </div>
         <div className={classes.hamburgerMenu} onClick={toggleSidebar}>
