@@ -4,7 +4,7 @@
 This project is a user management system built with React. The project showcases a responsive design and incorporates features like data fetching from a mock API, search functionality, and pagination.
 
 ## Features
-1. **Styled Components & SCSS**: Utilized styled components combined with SCSS for consistent and modular styling.
+1. **CSS Modules**: Utilized CSS Modules for consistent and modular styling.
 2. **Mock API**: User data is fetched from a mock API containing 500 records generated using Mockaroo.
 3. **Responsive Design**: The design adapts to various media types for an optimal viewing experience.
 4. **Search Functionality**: Users can search through the user data table.
@@ -59,7 +59,7 @@ The mock data includes fields such as:
 - phone
 
 ## Styling
-- **Styled Components**: Used for component-level styling to keep styles modular and scoped.
+- **CSS Modules**: Used for component-level styling to keep styles modular and scoped.
 - **SCSS**: Employed for global styles and complex styling requirements that are shared across multiple components.
 
 ## Responsiveness
@@ -70,14 +70,14 @@ The application is designed to be responsive, adapting to various screen sizes a
 - **Pagination**: Data is paginated to enhance the user experience and performance.
 
 ## Decisions and Approach
-1. **Styled Components and SCSS**: Combining styled components with SCSS allows for a modular approach to styling while leveraging the power of SCSS for more complex styles.
+1. **CSS Modules and SCSS**: Combining CSS Modules with SCSS allows for a modular approach to styling while leveraging the power of SCSS for more complex styles.
 2. **Mockaroo for Mock API**: Chose Mockaroo due to its flexibility and ease of generating realistic mock data.
 3. **Figma Design**: Followed the provided Figma design closely to ensure a consistent and visually appealing UI.
 4. **Responsive Design**: Prioritized responsiveness to ensure the application is usable on a wide range of devices.
 5. **Search and Pagination**: Added to improve data handling and user experience by making it easy to find specific records and manage large datasets.
 
 ## Conclusion
-This project demonstrates a well-rounded approach to building a responsive user management system with modern tools and best practices in front-end development. The combination of styled components, SCSS, and a mock API ensures a scalable and maintainable codebase.
+This project demonstrates a well-rounded approach to building a responsive user management system with modern tools and best practices in front-end development. The combination of CSS Modules, SCSS, and a mock API ensures a scalable and maintainable codebase.
 
 ## Future Improvements
 - Implement user authentication and authorization.
