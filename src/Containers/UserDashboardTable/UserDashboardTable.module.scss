@@ -171,7 +171,7 @@
   }
   
   .userPopUpMenu {
-    right: -5px;
+    right: -200px;
     top: 45px;
   }
 
@@ -186,13 +186,13 @@
 
 @media screen and (max-width: 767px) {
   .container {
-    padding: 20px 20px 10px 20px;
+    padding: 20px 30px 10px 20px;
     position: relative;
     overflow-x: auto;
   }
   
   .userPopUpMenu {
-    right: -5px;
+    right: -500px;
     top: 45px;
   }
 

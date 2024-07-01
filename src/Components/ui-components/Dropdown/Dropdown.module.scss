@@ -1,0 +1,86 @@
+.dropdown {
+  position: relative;
+  user-select: none;
+  border: 1px solid rgba(84, 95, 125, 0.15);
+  width: 100%;
+  height: 60px; /* Consider removing one of the duplicate height declarations */
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 6px 0;
+  outline: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 21px;
+  color: var(--fontWhite);  // Assuming --fontWhite is defined elsewhere
+  font-size: 10px;  // Updated font-size
+
+  .dropdownButton {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #999999;
+    cursor: pointer;
+    color: var(--fontWhite);  // Duplication
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  i {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: auto;
+  }
+
+  .dropdownContent {
+    position: absolute;
+    width: 100%;
+    top: 110%;
+    left: 0;
+    box-shadow: rgba(211, 211, 211, 0.35) 0px 5px 15px;
+    box-sizing: border-box;
+    z-index: 1;
+    background: white;
+    color: var(--fontWhite);
+    transition: all 0.8s;
+    min-height: 100%;
+    max-height: 20vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: left;
+    border-radius: 2.59px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    outline: none;
+    border: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .dropdownItem {
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      width: 100%;
+
+      &:hover {
+        background: var(--primaryColor);
+        color: white;
+      }
+    }
+  }
+
+  .dropdownItem2 {
+    margin: 0;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+}

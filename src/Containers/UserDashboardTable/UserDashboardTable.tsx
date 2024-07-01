@@ -1,4 +1,5 @@
 import { useState, useRef, useContext, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import Card from '../../Components/ui-components/Card/Card';
 import classes from './UserDashboardTable.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -47,6 +48,7 @@ const UserDashboardTable = ({ onViewDetails }: { onViewDetails: (id: number) => 
 
   const userStatusHandler = (index: number, status: string) => {
     setUsers(users.map((user, i) => (i === index ? { ...user, status } : user)));
+    toast.success(`User has been ${status === 'Active' ? 'activated' : 'blacklisted'} successfully!`);
   };
 
   const indexOfLastUser = currentPage * itemsPerPage;

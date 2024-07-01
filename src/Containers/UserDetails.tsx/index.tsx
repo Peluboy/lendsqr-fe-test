@@ -6,7 +6,7 @@ import StarRating from '../../Components/ui-components/Rating/StarRating';
 import Card from '../../Components/ui-components/Card/Card';
 import Tabs from '../../Components/ui-components/Tabs/Tabs';
 
-const UserDetails = ({ onBack }: { onBack: () => void }) => {
+const UserDetails = ({ onBack, onUpdateStatus }: { onBack: () => void, onUpdateStatus: (status: string) => void }) => {
   const { selectedUser } = useContext(AppContext)!;
   const [activeTab, setActiveTab] = useState('General Details');
 
@@ -27,8 +27,8 @@ const UserDetails = ({ onBack }: { onBack: () => void }) => {
         <div className={classes.userDetailsTop}>
           <div className={classes.header}>User Details</div>
           <div className={classes.usersButton}>
-            <button>BACKLIST USER</button>
-            <button>ACTIVATE USER</button>
+            <button onClick={() => onUpdateStatus('Blacklisted')}>BACKLIST USER</button>
+            <button onClick={() => onUpdateStatus('Active')}>ACTIVATE USER</button>
           </div>
         </div>
         <Card>

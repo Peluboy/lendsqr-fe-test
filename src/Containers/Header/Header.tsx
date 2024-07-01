@@ -3,7 +3,7 @@ import classes from "./Header.module.scss";
 import lendsqrLogo from "../../Assets/Images/lendsqrLogo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
-import profileImage from "../../Assets/Images/userProfileImage.svg";
+import profileImage from "../../Assets/Images/userImage.png";
 import { AppContext } from "../../Context/AppContext";
 import { AppContextValues } from "../../Utilities/types";
 import SideNav from "../SideNav/SideNav";
@@ -74,7 +74,7 @@ const Header = () => {
           </button>
         </div>
         <div className={classes.profileAndDocs}>
-        <a href="https://github.com/Peluboy/lendsqr-fe-test" target="_blank">Docs</a>
+        <a href="https://github.com/Peluboy/lendsqr-fe-test" target="_blank" rel="noreferrer">Docs</a>
           <IoMdNotificationsOutline fontSize={26} color="#213F7D" className={classes.notifiIcon}/>
           <div>
             <Avatar size={40} src={profileImage} />

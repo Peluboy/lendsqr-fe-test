@@ -6,10 +6,10 @@ const LoginPictureSection = () => {
   return (
     <section className={classes.container}>
       <div className={classes.lendsqrLogoSection}>
-        <img src={lendsqrLogo} alt="lendsqr logo" />
+        <img src={lendsqrLogo} alt="lendsqr-logo" />
       </div>
       <div className={classes.loginImageSection}>
-        <img src={lensdqrLoginImage} alt="lendsqr image" />
+        <img src={lensdqrLoginImage} alt="lendsqr-image" />
       </div>
     </section>
   );

@@ -75,7 +75,7 @@ const useUsers = () => {
     isSendingRequest,
     selectedUser,
     getUserDetails,
-    organizations, // Add this line to return organizations
+    organizations,
   };
 };
 

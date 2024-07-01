@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import classes from "./Dropdown.module.css";
+import classes from "./Dropdown.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { DropdownProps } from "../../../Utilities/types";
